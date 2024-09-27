@@ -7,11 +7,13 @@
 
 // problem 1:
 import java.util.Scanner; // required for the Scanner class
-
-import javax.swing.JDialog;
 import javax.swing.JOptionPane; // required for the JOPtionPane class
 
 public class IO_Practice {
+    /**
+     * 
+     * @param args      entered values
+     */
     public static void main(String[] args) {
         // problem 2:
         // variables declaration
@@ -53,25 +55,26 @@ public class IO_Practice {
                            "one word for the middle name, put " +
                            "a hyphen \"-\" to join them.");
         cMiddleName = consoleReader.next();
-        consoleReader.nextLine();
         System.out.println("Enter the customer's last name:");
-        cLastName = consoleReader.nextLine().toUpperCase();
+        cLastName = consoleReader.next().toUpperCase();
 
         System.out.println("Enter the customer's street " +
                            "address (i.e., nos. and street):");
-        streetAddress = consoleReader.nextLine();
+        streetAddress = consoleReader.next();
         /*
          * note: some of these immediate calls of
          * "consoleReader.nextLine()"" is to prevent the
          * program from skipping inputs after the user
          * presses enter
          */
-        // consoleReader.nextLine();
+        consoleReader.nextLine();
 
         System.out.println("Enter the city name:");
-        cityName = consoleReader.nextLine();
+        cityName = consoleReader.next();
+        consoleReader.nextLine();
         System.out.println("Enter the state:");
-        stateName = consoleReader.nextLine();
+        stateName = consoleReader.next();
+        consoleReader.nextLine();
         System.out.println("Enter the zip code:");
         zipCode = consoleReader.next();
         consoleReader.nextLine();
@@ -129,12 +132,12 @@ public class IO_Practice {
          * published, and the current year
          */
         System.out.println("Enter the book's publisher:");
-        publisher = consoleReader.nextLine();
+        publisher = consoleReader.next();
         System.out.println("Enter the book's edition\n" +
-                           "(e.g. 1st Edition, 2nd Edition," +
-                           " 3rd Edition, etc.):");
-        edition = consoleReader.nextLine();
+                           "(e.g. 1st, 2nd, 3rd, etc.):");
+        edition = consoleReader.next();
         System.out.println("Enter the year the book was published:");
+        consoleReader.nextLine();
         yearPublished = consoleReader.nextInt();
         System.out.println("Enter the current year (ex: 2024):");
         thisYear = consoleReader.nextInt();
@@ -151,8 +154,8 @@ public class IO_Practice {
                            "The customer's favorite book from " +
                            firstName + " is:\n" +
                            "\t" + bookTitle + ",\n" + "\t" + publisher +
-                           ", " + edition + ", " + yearPublished + "." +
-                           "\nThe length of the title is: " +
+                           ", " + edition + " Edition, " + yearPublished + 
+                           "." + "\nThe length of the title is: " +
                            titleLength + ".\n" + "It is a book that is " +
                            (thisYear - yearPublished) + " year(s) old." +
                            "\n");
@@ -165,7 +168,6 @@ public class IO_Practice {
         System.out.printf("The total cost of " + numberOfBooks + 
                           " books of unit price $%,.2f is $%,.2f" +
                           " from the " + publisher, unitPrice, totalCost);
-        System.out.println("\n\nThis is the end of that invoice.");
 
         consoleReader.close();
 
@@ -174,19 +176,11 @@ public class IO_Practice {
          * displays a JOptionPane dialog window to prompt the user whether
          * they want to reorder any books
          */
-        /*
-         * due to the JOptionPane dialogue boxes sometimes appearing behind
-         * all of your windows, you will need to declare a JDialog and
-         * setAlwaysOnTop to true
-         */
-        final JDialog dialog = new JDialog();
-        dialog.setAlwaysOnTop(true);
-
-        int wantToReorder = JOptionPane.showConfirmDialog(dialog,
+        int wantToReorder = JOptionPane.showConfirmDialog(null,
                                                           "Do you want to reorder"
                                                           + " any books?" + 
                                                           "\nYes or No",
-                                                          "Reorder?",
+                                                    "Reorder?",
                                                           JOptionPane.YES_NO_OPTION);
         /*
          * the below "if-else-if" statement will check the user's choice and
@@ -199,40 +193,18 @@ public class IO_Practice {
             * the unit price of the books ordered
             */
             numberOfBooks = Integer.parseInt(JOptionPane.showInputDialog("How many" +
-                                             " books to you want to order?"));
-            unitPrice = Double.parseDouble(JOptionPane.showInputDialog("How much " +
+                                             " books to you want to order?",
+                       "Input"));
+            unitPrice = Integer.parseInt(JOptionPane.showInputDialog("How much " +
                                          " did the books cost?"));
-            // this fake "sysout" makes a new line in the console, as printf can't do so
-            System.out.println("");
-            System.out.printf("The total cost of " + numberOfBooks + 
-                              " books of unit price $%,.2f is $%,.2f" +
-                              " from the " + publisher, unitPrice, totalCost);
-            System.out.println("\n\nThis is the end of that invoice.");
         } else if (wantToReorder == JOptionPane.NO_OPTION) {
             /*
              * however, if the user clicks "No", there will be a single statement
              * printed to the console that states there has not been any books
              * reordered
              */
-            System.out.println("\nThere have been no reorders of any books.");
+            System.out.println("There has been no reorders of any books.");
         }
-
-        // problem 19:
-        /*
-         * prints information about the customer to the console along with the
-         * customer's "invoice"
-         */
-        System.out.println("Information about the customer:\n" +
-                           "Name:\t" + cFirstName + " " + cMiddleName + 
-                           " " + cLastName + "\n" +
-                           "Street Address:\t" + streetAddress + "\n" +
-                           "City:\t" + cityName + "\n" +
-                           "State:\t" + stateName + "\n" +
-                           "Zip code:\t" + zipCode + "\n");
-        System.out.printf("The total cost of " + numberOfBooks + 
-                          " books of unit price $%,.2f is $%,.2f" +
-                          " from the " + publisher, unitPrice, totalCost);
-        System.out.println("\n\nThis is the end of that invoice.");
 
         // problem 1:
         System.exit(0); // required for the JOptionPane class
