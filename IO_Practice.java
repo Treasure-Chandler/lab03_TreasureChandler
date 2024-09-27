@@ -167,8 +167,8 @@ public class IO_Practice {
          */
         System.out.printf("The total cost of " + numberOfBooks + 
                           " books of unit price $%,.2f is $%,.2f" +
-                          " from the " + publisher, unitPrice, totalCost);
-        System.out.println("\n\nThis is the end of that invoice.\n");
+                          " from " + publisher, unitPrice, totalCost);
+        System.out.println("\n\nThis is the end of that invoice.");
 
         consoleReader.close();
 
@@ -209,7 +209,7 @@ public class IO_Practice {
             System.out.printf("The total cost of " + numberOfBooks + 
                               " books of unit price $%,.2f is $%,.2f" +
                               " from " + publisher, unitPrice, totalCost);
-            System.out.println("\n\nThis is the end of that invoice.");
+            System.out.println("\n\nThis is the end of that invoice.\n");
         } else if (wantToReorder == JOptionPane.NO_OPTION) {
             /*
              * however, if the user clicks "No", there will be a single statement
